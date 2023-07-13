@@ -4,11 +4,11 @@ import BackgroundMain from "../components/backgroundMain";
 import Carousel from "../components/carousel";
 import Carousel2 from "../components/carousel2";
 import Footer from "../components/footer";
+import {motion} from 'framer-motion'
 
 const home = () => {
     return ( <body onLoad={script}>
         <div class="blackground">
-          <Nav />
           <div class="background-Main hidden-up">
             <div class="backing-main hidden-up">
               <img src={vanceApexImage} class="vanceApex hidden-up" />
@@ -24,10 +24,7 @@ const home = () => {
 }
  
 function script(){
-  
 
-    let hamburger = document.querySelector('.hamburger');
-    let dropmenu = document.querySelector('.button-show');
     
     const observer = new IntersectionObserver((entries) =>{
         entries.forEach((entry) => {
@@ -195,9 +192,6 @@ function script(){
       
       carousel2();
      
-      hamburger.addEventListener('click',function (e) {
-        dropmenu.className = "top-bar-show"
-     });
     
     }
     

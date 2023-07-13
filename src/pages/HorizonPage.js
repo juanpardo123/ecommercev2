@@ -9,7 +9,6 @@ const HorizonPage = () => {
     return ( <body onLoad={script2}>
         <div class="background">
             <div class="backing">
-               <Nav/>
                 <div class="buttons">
                     <div class="circle green">
     
@@ -167,9 +166,6 @@ const videoPlay = document.querySelectorAll('video');
 videoPlay.forEach((el) => videoObserver.observe(el));
 hiddenElements.forEach((el) => observer.observe(el));
 
-hamburger.addEventListener('click',function (e) {
-   dropmenu.classList.add("top-bar-show")
-});
 
 
 

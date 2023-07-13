@@ -1,24 +1,36 @@
 import Nav from "../components/nav";
+import React, {useContext} from "react";
+import { Context } from "../store";
 import Footer from "../components/footer";
 import axios from 'axios'
 import ProductContainer from "../components/productContainer";
+import { useState } from 'react';
+import {motion} from 'framer-motion'
+
+
 
 const response = await axios('http://localhost:8081/products');
+const response2 = await axios('http://localhost:8081/price');
 const data = response.data;
-console.log(data);
 
-const products = () => {
-  
+
+const Products = () => {
+    const [cart, setCart] = useContext(Context);
+    const [productList, setProductList] = useState(data);
+
     return ( 
 
         <body onLoad={productScript}>
-    <div class="background-products">
-        <div class="backing-products">
-            <Nav/>
+            
+    <div className="background-products">
+    <div className="filter-holder">
+            <button className="filter" onClick={byPrice}>By price</button>
+            </div>
+        <div className="backing-products">
 
             <div class="main">
                 <div id="slider" class="hidden-grow">
-                <ProductContainer productList= {data}/>
+                <ProductContainer productList= {productList}/>
                 </div>
             </div>
         </div>
@@ -28,6 +40,11 @@ const products = () => {
     <Footer/>
 </body>
     );
+
+    function byPrice(){
+    setProductList(response2.data)
+}
+
 }
  
 
@@ -52,9 +69,7 @@ let dropmenu = document.querySelector('.button-show');
 
 
 const slider = document.getElementById("slider");
-    hamburger.addEventListener('click',function (e) {
-        dropmenu.className = "top-bar-show"
-     });
+ 
 }
 
-export default products;
+export default Products;
