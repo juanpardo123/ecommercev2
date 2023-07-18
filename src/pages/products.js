@@ -9,10 +9,10 @@ import {motion, AnimatePresence} from 'framer-motion'
 
 
 
-const response = await axios('http://localhost:8081/products');
-const response2 = await axios('http://localhost:8081/price');
-const response3 = await axios('http://localhost:8081/type');
-const response4 = await axios('http://localhost:8081/priceDesc');
+const response = await axios('https://databaseecomv2.onrender.com/products');
+const response2 = await axios('https://databaseecomv2.onrender.com/price');
+const response3 = await axios('https://databaseecomv2.onrender.com/type');
+const response4 = await axios('https://databaseecomv2.onrender.com/priceDesc');
 
 const data = response.data;
 
