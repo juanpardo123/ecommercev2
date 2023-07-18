@@ -2,9 +2,10 @@ import Nav from "../components/nav";
 import Footer from "../components/footer";
 import axios from "axios";
 import video from "../Images/laptop.mp4";
+import vanceBlade from '../Images/vanceblade.png'
 import video2 from '../Images/video2.mp4'
 import ProductContainer from "../components/productContainer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ScrollMagic from "scrollmagic";
 
@@ -19,14 +20,13 @@ const Computer = () => {
       ></script>
        <div className="intro">
           <video src={video2} className="movideo"></video>
-          <button className="filter">By price</button>
         </div>
-      <div className="background-products">
-       
-        <div className="backing-products">
-          <div class="main"></div>
-        </div>
-      </div>
+        <div class="background-MainComp ">
+            <div class="backing-main ">
+              <img src={vanceBlade} class="vanceApex " />
+              <h2 class=" main-h2">"Where Performance Meets Elegance"</h2>
+            </div>
+          </div>
 
       <Footer />
     </body>

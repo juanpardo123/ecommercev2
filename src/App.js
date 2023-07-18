@@ -9,6 +9,7 @@ import Computer from "./pages/lapTop";
 import Storage from "./store";
 import { useState } from 'react';
 import Modal from "./components/modal";
+import ScrollToTop from "./components/scroll";
 
 function App() {
   return (
@@ -17,10 +18,11 @@ function App() {
     <BrowserRouter>
     
     <Nav />
+    <ScrollToTop/>
       <Routes>
-     
+       
         <Route path="/" element={<Home />} />
-        <Route path="/comp" element={<Computer />} />
+        <Route path="/blade" element={<Computer />} />
         <Route path="/products" element={<Products />} />
         <Route path="/HorizonPage" element={<HorizonPage />} />
         <Route path="/contactUs" element={<ContactUs />} />

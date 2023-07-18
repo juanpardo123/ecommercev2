@@ -5,12 +5,15 @@ import Footer from "../components/footer";
 import axios from 'axios'
 import ProductContainer from "../components/productContainer";
 import { useState } from 'react';
-import {motion} from 'framer-motion'
+import {motion, AnimatePresence} from 'framer-motion'
 
 
 
 const response = await axios('http://localhost:8081/products');
 const response2 = await axios('http://localhost:8081/price');
+const response3 = await axios('http://localhost:8081/type');
+const response4 = await axios('http://localhost:8081/priceDesc');
+
 const data = response.data;
 
 
@@ -20,18 +23,35 @@ const Products = () => {
 
     return ( 
 
-        <body onLoad={productScript}>
+        <body >
             
     <div className="background-products">
     <div className="filter-holder">
-            <button className="filter" onClick={byPrice}>By price</button>
+        <h3 className="sort">sort by:</h3>
+            <button className="filter" onClick={byDefault}>A-Z</button>
+            <button className="filter" onClick={byPrice}>By price Low-High</button>
+            <button className="filter" onClick={byPriceDesc}>By price High-Low</button>
+            <button className="filter" onClick={byType}>By Type</button>
             </div>
         <div className="backing-products">
 
             <div class="main">
-                <div id="slider" class="hidden-grow">
+            <AnimatePresence>
+                <motion.div id="slider" class=""
+                initial={{ scale:0 }}
+                animate={{ scale:1 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 30
+                  }}
+                  exit={{
+                    scale:0
+                  }}
+                >
                 <ProductContainer productList= {productList}/>
-                </div>
+                </motion.div>
+                    </AnimatePresence>
             </div>
         </div>
        
@@ -44,32 +64,19 @@ const Products = () => {
     function byPrice(){
     setProductList(response2.data)
 }
+function byDefault(){
+    setProductList(response.data)
+}
+function byPriceDesc(){
+    setProductList(response4.data)
+}
+function byType(){
+    setProductList(response3.data)
+}
 
 }
  
 
-function productScript(){
-    let hamburger = document.querySelector('.hamburger');
-let dropmenu = document.querySelector('.button-show');
-   
-   
-   // animations on scroll
-   const observer = new IntersectionObserver((entries) =>{
-    entries.forEach((entry) => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
-        }
-    })
- });
 
- const hiddenElements = document.querySelectorAll('.hidden , .hidden-left, .hidden-right, .hidden-center, .hidden-center-1 , .hidden-center-2 , .hidden-center-3 , .hidden-center-4, .hidden-grow, .hidden-background, .hidden-up, .hidden-down');
-
- hiddenElements.forEach((el) => observer.observe(el));
-
-
-
-const slider = document.getElementById("slider");
- 
-}
 
 export default Products;

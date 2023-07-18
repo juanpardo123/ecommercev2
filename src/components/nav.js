@@ -3,7 +3,7 @@ import logoImage from "../Images/vanceV3.png";
 import { Context } from "../store";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-
+import ShopCart from "./shopCart";
 const Nav = ({ isVisible }) => {
   const [cart, setCart] = useContext(Context);
   const [show, setShow] = useState(false);
@@ -19,7 +19,7 @@ const Nav = ({ isVisible }) => {
             <Link to="/products">Products</Link>
           </li>
           <li>
-            <Link to="/HorizonPage">Get vance Horizon</Link>
+            <a href="/blade">Get vance Blade</a>
           </li>
           <li>
             <Link to="/contactUs">Contact Us</Link>
@@ -45,17 +45,7 @@ const Nav = ({ isVisible }) => {
         </ul>
       </nav>
       <AnimatePresence>
-      {show && <motion.div className="modal" initial={{ x:500 }}
-    animate={{ x:0 }}
-    transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 30
-      }}
-      exit={{
-        x:700
-      }}
-    ></motion.div>}
+      {show && <ShopCart/>}
     </AnimatePresence>
     </div>
   );

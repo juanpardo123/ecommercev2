@@ -14,13 +14,16 @@ const ProductContainer = (props) => {
 <img src={element.url}></img>
 <div className="text">
     <h1>{element.title}</h1><br/>
-    <h2>Price: {element.title}</h2><br/>
-    <h3>Type: {element.title}</h3><br/>
+    <h2>Price: ${element.price}</h2><br/>
+    <h3>Type: {element.type}</h3><br/>
     {/* <p>{element.description}</p> */}
     <button onClick={()=>{
         let item = {
             title: element.title,
-            description: element.description
+            description: element.description,
+            price: element.price,
+            url: element.url,
+            type: element.type
         }
         console.log(element)
         setCart([item,...cart])

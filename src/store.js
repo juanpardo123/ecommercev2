@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const userCart = [1,2,3];
+const userCart = [];
 
 export const Context = React.createContext();
 
